@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE taglib PUBLIC	"-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+                        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+  <tlibversion>1.0</tlibversion>
+  <jspversion>1.1</jspversion>
+  <shortname>taglib affichage minuscule</shortname>
+  
+  <tag>
+    <name>min</name>
+    <tagclass>fr.assj.gestiontournoi.taglibs.AfficheMinusculeTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+  </tag>
+  
+  <tag>
+    <name>arrondir</name>
+    <tagclass>fr.assj.gestiontournoi.taglibs.ArrondirNombreTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    
+    <attribute>
+      <name>decimale</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+      <name>fixe</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+      <name>separateur</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>tronquer</name>
+    <tagclass>fr.assj.gestiontournoi.taglibs.TronquerChaineTag</tagclass>
+    <bodycontent>JSP</bodycontent>
+    
+    <attribute>
+      <name>max</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+      <name>acronyme</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+  </tag>
+    
+</taglib>

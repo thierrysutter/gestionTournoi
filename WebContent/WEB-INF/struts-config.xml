@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+    <form-beans>
+    <!-- <form-bean name="HelloForm" type="com.objis.demostruts.HelloForm"/>
+    	 -->
+    	 <!-- 
+    	<form-bean name="CreationTournoiForm" type="fr.assj.gestiontournoi.forms.tournoi.CreationTournoiForm" />
+    	<form-bean name="SaisieEquipesForm" type="fr.assj.gestiontournoi.forms.tournoi.SaisieEquipesForm" />
+    	 -->
+    </form-beans>
+    
+<!-- ========================================= Global Exception Definitions -->    
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+    
+<!-- =========================================== Global Forward Definitions -->
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+        <!-- <forward
+            name="welcome"
+            path="/Welcome.do"/> -->
+            
+		<forward name="accueil" path="/accueil.do"/>
+		<forward name="login" path="/login.do"/>
+		<!-- <forward name="error" path="/accueil/erreur.jsp"/> -->
+    </global-forwards>
+    
+<!-- =========================================== Action Mapping Definitions -->
+	<action-mappings>
+            <!-- Default "Welcome" action -->
+            <!-- Forwards to Welcome.jsp -->
+        <!-- <action
+            path="/Welcome"
+            forward="/pages/Welcome.jsp"/>
+            
+            <action    path      = "/HelloWorld"
+	               type      = "com.objis.demostruts.HelloAction"
+	               name      = "HelloForm"
+	               scope     = "request"
+	               validate  = "true"
+	               input     = "/hello.jsp"
+	     >
+	        <forward name="SayHello" path="/hello.jsp"  />
+	    </action>
+	    
+	    <action path="/DemandeFormation" 
+				name="DemandeFormationForm"
+				type="com.objis.demostruts.DemandeFormationAction"
+            	scope="request"
+            	validate="true"
+            	input="/pages/demandeFormation1.jsp">
+			<set-property property="cancellable" value="true"/>
+			<forward name="success" path="/pages/success.jsp" />
+		</action>
+				<action path="/DemandeFormation2" 
+				name="DemandeFormationForm"
+				type="com.objis.demostruts.DemandeFormationAction"
+            	scope="request"
+            	validate="false"
+            	input="/pages/demandeFormation2.jsp">
+			<set-property property="cancellable" value="true"/>
+			<forward name="success" path="/pages/success.jsp" />
+		</action>
+            
+             -->
+            
+            <!-- DIVERS -->
+            
+            <action
+            	path="/accueil"
+            	type="fr.assj.gestiontournoi.actions.Accueil">
+            	<forward name="success" path="/accueil/accueil.jsp"/>
+            </action>
+            
+            <action
+            	path="/login"
+            	type="fr.assj.gestiontournoi.actions.Login">
+            	<forward name="close" path="/login/loginClose.jsp"/>
+            	<forward name="login" path="/login/login.jsp"/>
+            	<forward name="success" path="/accueil/accueil.jsp"/>
+            </action>
+            
+            <!-- CLUB -->
+            
+            <action
+            	path="/clubs"
+            	type="fr.assj.gestiontournoi.actions.club.GestionClubs">
+            	<forward name="success" path="/club/gestionClubs.jsp"/>
+            </action>
+            
+            <action
+            	path="/clubs.creer"
+            	type="fr.assj.gestiontournoi.actions.club.CreerClub">
+            	<forward name="liste" path="/clubs.do"/>
+            	<forward name="success" path="/club/creationClub.jsp"/>
+            </action>
+            
+            <action
+            	path="/clubs.afficher"
+            	type="fr.assj.gestiontournoi.actions.club.AfficherClub">
+            	<forward name="success" path="/club/ficheClub.jsp"/>
+            </action>
+            
+            <action
+            	path="/clubs.supprimer"
+            	type="fr.assj.gestiontournoi.actions.club.SupprimerClub">
+            	<forward name="liste" path="/clubs.do"/>
+            </action>
+            
+            <!-- EQUIPE -->
+            
+            <action
+            	path="/equipes"
+            	type="fr.assj.gestiontournoi.actions.equipe.GestionEquipes">
+            	<forward name="success" path="/equipe/gestionEquipes.jsp"/>
+            </action>
+            
+            <action
+            	path="/equipes.ajouter"
+            	type="fr.assj.gestiontournoi.actions.equipe.CreerEquipe">
+            	<forward name="liste" path="/equipes.do"/>
+            	<forward name="success" path="/equipe/creationEquipe.jsp"/>
+            </action>
+            
+            <action
+            	path="/equipe.enregistrer"
+            	type="fr.assj.gestiontournoi.actions.equipe.EnregistrerEquipe">
+            	<forward name="saisieEquipes" path="/equipe/saisieEquipes.jsp"/>
+            	<forward name="clotureInscription" path="/groupe.repartir.do"/>
+            </action>
+            
+            
+            
+            <action
+            	path="/tournoi.lister"
+            	type="fr.assj.gestiontournoi.actions.tournoi.AfficherListeTournois">
+            	<forward name="success" path="/tournoi/afficherListeTournois.jsp"/>
+            </action>
+            
+            <action
+            	path="/tournoi.creer"
+            	type="fr.assj.gestiontournoi.actions.tournoi.CreerTournoi">
+            	<forward name="success" path="/tournoi/creerTournoi.jsp"/>
+            	<forward name="creation" path="/tournoi.lister.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.parametrer"
+            	type="fr.assj.gestiontournoi.actions.tournoi.ParametrerTournoi">
+            	<forward name="success" path="/tournoi/ficheTournoi.jsp"/>
+            </action>
+            
+            <action
+            	path="/tournoi.supprimer"
+            	type="fr.assj.gestiontournoi.actions.tournoi.SupprimerTournoi">
+            	<forward name="success" path="/tournoi.lister.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.modifier"
+            	type="fr.assj.gestiontournoi.actions.tournoi.ModifierTournoi">
+            	<forward name="success" path="/tournoi.lister.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.duppliquer"
+            	type="fr.assj.gestiontournoi.actions.tournoi.DuppliquerTournoi">
+            	<forward name="success" path="/tournoi.lister.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.ouvrir"
+            	type="fr.assj.gestiontournoi.actions.tournoi.OuvrirTournoi">
+            	<forward name="success" path="/tournoi.afficher.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.afficher"
+            	type="fr.assj.gestiontournoi.actions.tournoi.AfficherTournoi">
+            	<forward name="success" path="/tournoi.lister.do"/>
+            	<forward name="saisieEquipes" path="/equipe/saisieEquipes.jsp"/>
+            	<forward name="validationTournoi" path="/tournoi/tournoiComplet.jsp"/>
+            	<forward name="ouvrirTournoi" path="/tournoi/tournoiComplet.jsp"/>
+            	<forward name="phase2" path="/tournoi.afficher2.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.suivant"
+            	type="fr.assj.gestiontournoi.actions.tournoi.CalculerPhaseSuivante">
+            	<forward name="success" path="/tournoi.afficher2.do"/>
+            </action>
+            
+            <action
+            	path="/tournoi.afficher2"
+            	type="fr.assj.gestiontournoi.actions.tournoi.AfficherPhase2">
+            	<forward name="success" path="/tournoi/afficherPhase2.jsp"/>
+            </action>
+            
+            <action
+            	path="/groupe.repartir"
+            	type="fr.assj.gestiontournoi.actions.groupe.RepartirGroupes">
+            	<forward name="success" path="/match.generer.do"/>
+            </action>
+            
+            <action
+            	path="/groupe.afficherClassements"
+            	type="fr.assj.gestiontournoi.actions.groupe.AfficherClassements">
+            	<forward name="success" path="/groupe/afficherClassements.jsp"/>
+            </action>
+            
+            <action
+            	path="/match.generer"
+            	type="fr.assj.gestiontournoi.actions.match.GenererCalendrier">
+            	<forward name="success" path="/tournoi.afficher.do"/>
+            </action>
+            
+            <action
+            	path="/match.enregistrer"
+            	type="fr.assj.gestiontournoi.actions.match.EnregistrerResultats">
+            	<forward name="success" path="/tournoi.afficher.do"/>
+            </action>
+            
+            <action
+            	path="/planning.enregistrer"
+            	type="fr.assj.gestiontournoi.actions.match.EnregistrerPlanning">
+            	<forward name="success" path="/tournoi.afficher.do"/>
+            </action>
+            
+	</action-mappings>
+	
+<!-- ======================================== Message Resources Definitions -->
+
+    <message-resources parameter="fr.assj.gestiontournoi.resources.ApplicationResources"/>
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+
+      To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+      directory then uncomment the plugin definition below.
+	-->
+    <!-- <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+      <set-property property="definitions-config"
+                       value="/WEB-INF/tiles-defs.xml" />
+      <set-property property="moduleAware" value="true" />
+    </plug-in> -->
+
+  <!-- =================================================== Validator plugin -->
+<!-- 
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml"/>
+  </plug-in>
+ -->
+</struts-config>
