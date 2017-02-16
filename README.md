@@ -1,2 +1,2 @@
 # gestionTournoi
-Applmi web de gestion de tournoi JAVA
+Appli web de gestion de tournoi JAVA
